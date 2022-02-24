@@ -3,6 +3,7 @@ package com.example.assignment1_flixster
 import org.json.JSONArray
 
 // data class -> when you wanna convert object from json to class
+// kinda like 'model' in MVC
 
 // Class Constructor
 data class Movie(
@@ -16,9 +17,12 @@ data class Movie(
 )
 //Class Body
 {
+    /** CLASS VARIABLES **/
     // URL base was given
     // More info found here -> https://api.themoviedb.org/3/configuration?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed
     val posterImageURL = "https://image.tmdb.org/t/p/w342/$posterPath"
+
+
 
     // Methods on Movie class you can call without having an instance of Movie
     // ex) if in other class you can do: Movie.fromJsonArray()
