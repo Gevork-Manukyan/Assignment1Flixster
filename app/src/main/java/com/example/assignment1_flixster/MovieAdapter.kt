@@ -1,6 +1,7 @@
 package com.example.assignment1_flixster
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import okhttp3.HttpUrl.Companion.toHttpUrl
+
+
+private const val TAG = "MovieAdapter"
+
 
 // Adapter is kinda like 'controller' in MVC
 
@@ -21,14 +25,18 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
     // Create and return a viewholder of the type viewholder we defined below (the inner class)
     // Returns essentially an empty/shell viewholder that needs to later be filled with data
     // The viewholder is defined by the view that is given to it (item_movie)
+    // Expensive operation: creating a view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Log.i(TAG, "onCreateViewHolder")
         val view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false)
         return ViewHolder(view);
     }
 
     // Given a viewholder and a position, take the data at the position and bind it into that viewholder
     // Takes the empty/shell viewholder and attaches to it the data of the movie at specific position
+    // Cheap operation: simply binding data to an existing viewholder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.i(TAG, "onBindViewHolder position $position")
         val movie = movies[position]
         holder.bind(movie)
     }
@@ -52,7 +60,7 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
         fun bind(movie: Movie) {
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
-            Glide.with(itemView).load(movie.posterImageURL).into(ivPoster)
+            Glide.with(context).load(movie.posterImageURL).into(ivPoster)
         }
 
     }
