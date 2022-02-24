@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import okhttp3.HttpUrl.Companion.toHttpUrl
 
 // Adapter is kinda like 'controller' in MVC
@@ -51,7 +52,7 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
         fun bind(movie: Movie) {
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
-            // TODO: populate imageView
+            Glide.with(itemView).load(movie.posterImageURL).into(ivPoster)
         }
 
     }
