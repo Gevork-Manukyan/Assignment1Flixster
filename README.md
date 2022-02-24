@@ -24,7 +24,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 ### App Walkthough GIF
 `TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-<img src="YOUR_GIF_URL_HERE" width=250><br>
+<img src="Assignment1_Flixster.mp4" width=250><br>
 
 ### Notes
 My biggest challenge was understanding how the ViewHolder and Adapter fit into the process and how they connected to everything else. I had to do a lot of reading up but now I have a much better understanding. 
