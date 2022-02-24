@@ -10,19 +10,29 @@ import org.json.JSONException
 
 
 private const val API_KEY = "e34b1cb04a474e9600a7d1c5ef07069f"
+private const val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=$API_KEY"
+private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
     private val movies = mutableListOf<Movie>()
 
+    // 1. Define a dat model class as the data source
+    // 2. Add the RecyclerView to the layout
+    // 3. Create a custom row layout XML file to visualize the item
+    // 4. Create an Adapter and ViewHolder to render the item
+    // 5. bind the adapter to the data source to populate the RecyclerView
+    // 6. Bind a layout manager to the RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        apiCall()
 
-        val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=$API_KEY"
-        val TAG = "CallAPI"
+    }
 
+    fun apiCall() {
         val client = AsyncHttpClient()
         client.get(NOW_PLAYING_URL, object : JsonHttpResponseHandler() {
 
